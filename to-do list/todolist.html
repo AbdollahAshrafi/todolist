@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-    </style>
+    <link rel="stylesheet" href="todolist.css">
 </head>
 <body>
     <div>
@@ -17,6 +16,15 @@
         </div>
         <div class="container-fluid mt-3">
             <ul id="taskList" class="list-group">
+                <div class="row ms-1 mb-3" id="1">
+                    <li id="hi" class="list-group-item col-9 rounded shadow d-inline-flex">
+                        <input type="checkbox" class="form-check-input me-3">
+                        <div>hi how are you my man i am</div>
+                    </li>
+                    <div class="btn-group col-auto">
+                        <button class="btn btn-outline-danger btn-sm col-auto deleteBtn">delete</button>
+                    </div>
+                </div>
             </ul>
         </div>
     </div>
@@ -27,9 +35,11 @@
             const taskList = document.querySelector("#taskList");
             const listItemParent = document.createElement("div");
             const listItem = document.createElement("li");
+            const taskTextElement = document.createElement('div');
             const btnParent = document.createElement("div")
             const deleteBtn = document.createElement("button");
             const doneBtn = document.createElement("button");
+
 
             // every list item's parent
             listItemParent.classList.add("row", "ms-1", "mb-3");
@@ -37,18 +47,28 @@
             listItemParent.setAttribute("id", counter);
             taskList.append(listItemParent);
 
-            // the li tag
-            listItem.innerHTML = task.value;
-            listItem.classList.add("list-group-item", "col-9", "rounded", "shadow");
+
+
+
+            // the list item (the task)
+            listItem.classList.add("list-group-item", "col-9", "rounded", "shadow", "d-inline-flex");
             listItemParent.append(listItem);
+
+            // the done checkbox
+            doneCheck = document.createElement("input")
+            doneCheck.setAttribute('type', 'checkbox')
+            doneCheck.classList.add("form-check-input", "me-3", "doneBtn")
+            listItem.append(doneCheck)
+
+            // the task text
+            taskTextElement.innerHTML = task.value;
+            taskTextElement.classList.add('taskText')
+            listItem.append(taskTextElement)
+
 
             // parent for the buttons(done, delete)
             btnParent.classList.add("btn-group", "col-auto");
             listItemParent.append(btnParent);
-            
-            doneBtn.innerText = "done";
-            doneBtn.classList.add("btn", "btn-primary", "col-auto", "doneBtn");
-            btnParent.append(doneBtn);
 
             deleteBtn.innerText = "delete";
             deleteBtn.classList.add("btn", "btn-outline-danger", "btn-sm", "col-auto", "deleteBtn");
@@ -86,16 +106,14 @@
         //making the done button work
         taskList.addEventListener('click', (e) => {
             if(e.target.classList.contains('doneBtn')) {
-                 let listItem = e.target.parentNode.parentNode.firstChild;
-                 listItem.classList.add("text-decoration-line-through");
-                 let listItemParent = e.target.parentNode.parentNode
-                 listItemParent.remove();
-                 document.getElementById('taskList').append(listItemParent)
+                let taskText = e.target.parentNode.querySelector(".taskText")
+                taskText.classList.add("text-decoration-line-through");
+                let listItemParent = e.target.parentNode.parentNode
+                listItemParent.remove();
+                document.getElementById('taskList').append(listItemParent);
+                e.target.disabled = true // this line should be change when adding to undo task feature
             }
         });
-
-        
-
 
 
 
