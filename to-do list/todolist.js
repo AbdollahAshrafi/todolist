@@ -17,9 +17,6 @@ function addTask() {
     listItemParent.setAttribute("id", counter);
     taskList.append(listItemParent);
 
-
-
-
     // the list item (the task)
     listItem.classList.add("list-group-item", "container-fluid", "rounded", "shadow-sm", "d-inline-flex");
     listItemParent.append(listItem);
@@ -46,7 +43,7 @@ function addTask() {
 document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
-            addTask();
+            document.querySelector("#submit").click()
         }
     })
 })
