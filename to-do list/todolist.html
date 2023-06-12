@@ -23,9 +23,12 @@
         <div class="container-fluid mt-3">
             <ul id="taskList" class="list-group">
                 <div class="row ms-1 mb-3" id="1">
-                    <li id="hi" class="list-group-item col-9 rounded shadow-sm d-inline-flex align-items-center">
+                    <li id="hi"
+                        class="list-group-item container-fluid rounded shadow-sm d-inline-flex align-items-center">
                         <input type="checkbox" class="form-check-input me-3">
                         <div>hi how are you my man i am</div>
+                        <button class="btn btn-outline-danger btn-sm col-auto deleteBtn">delete</button>
+
                     </li>
                 </div>
             </ul>
@@ -45,7 +48,7 @@
 
 
             // every list item's parent
-            listItemParent.classList.add("row", "ms-1", "mb-2");
+            listItemParent.classList.add("ms-1", "mb-2");
             counter++;
             listItemParent.setAttribute("id", counter);
             taskList.append(listItemParent);
@@ -54,7 +57,7 @@
 
 
             // the list item (the task)
-            listItem.classList.add("list-group-item", "col-9", "rounded", "shadow-sm", "d-inline-flex");
+            listItem.classList.add("list-group-item", "container-fluid", "rounded", "shadow-sm", "d-inline-flex");
             listItemParent.append(listItem);
 
             // the done checkbox
@@ -67,11 +70,6 @@
             taskTextElement.innerHTML = task.value;
             taskTextElement.classList.add('taskText')
             listItem.append(taskTextElement)
-
-
-            // parent for the buttons(done, delete)
-            btnParent.classList.add("btn-group", "col-auto");
-            listItemParent.append(btnParent);
 
             deleteBtn.innerText = "delete";
             deleteBtn.classList.add("btn", "btn-outline-danger", "btn-sm", "col-auto", "deleteBtn");
