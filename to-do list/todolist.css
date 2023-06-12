@@ -1,6 +1,7 @@
 :root {
     --main-color: rgb(37, 100, 207);
     --main-bg-color: rgb(250, 249, 248);
+    --task-hover-color: rgb(245, 245, 245)
 }
 
 
@@ -22,13 +23,31 @@ body {
 #task {
     border-width: 0px;
     border-radius: 5px 5px 0px 0px;
+    height: 52px;
 }
 
 .form-control-lg:focus {
     border-color: #597fe6;
+
 }
 
 #textbox-bottom-container {
+    border-radius: 0px 0px 4px 4px;
+    margin-top: 1px;
+    height: 44.89px;
     background-color: var(--main-bg-color);
-    
+
+}
+
+.btn-outline-secondary {
+    border-radius: 0px;
+}
+
+.list-group-item:hover {
+    background-color: var(--task-hover-color);
+
+}
+
+.list-group-item {
+    height: 52px;
 }
