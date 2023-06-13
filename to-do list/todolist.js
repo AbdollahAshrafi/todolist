@@ -64,9 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 })
 
-
-
-
 // making the delete button work 
 taskList.addEventListener('click', (e) => {
     if (e.target.classList.contains('deleteBtn')) {
@@ -91,6 +88,7 @@ taskList.addEventListener('click', (e) => {
         if (e.target.checked === false) {
             console.log("the button is unchecked")
             taskText.classList.remove('text-decoration-line-through')
+            document.getElementById('taskList').prepend(listItemParent) //make the unchecked task first
         }
     }
 });
