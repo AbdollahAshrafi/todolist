@@ -18,12 +18,12 @@ function addTask() {
     taskList.append(listItemParent);
 
     // the list item (the task)
-    listItem.classList.add("list-group-item", "container-fluid", "rounded", "shadow-sm", "d-inline-flex");
+    listItem.classList.add("list-group-item", "container-fluid", "rounded", "shadow-sm", "d-inline-flex", "align-items-center");
     listItemParent.append(listItem);
 
     // the done checkbox
     doneCheck.setAttribute('type', 'checkbox');
-    doneCheck.classList.add("form-check-input", "me-3", "doneBtn")
+    doneCheck.classList.add("form-check-input", "me-3", "mt-0", "doneBtn")
     listItem.append(doneCheck)
 
     // the task text
