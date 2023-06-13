@@ -12,7 +12,7 @@ function addTask() {
     const doneCheck = document.createElement("input");
 
     // every list item's parent
-    listItemParent.classList.add("ms-1", "mb-2");
+    listItemParent.classList.add("ms-1", "mb-1");
     counter++;
     listItemParent.setAttribute("id", counter);
     taskList.append(listItemParent);
@@ -70,16 +70,23 @@ taskList.addEventListener('click', (e) => {
     }
 });
 
-//making the done button work
-
 
 taskList.addEventListener('click', (e) => {
     if (e.target.classList.contains('doneBtn')) {
-        let taskText = e.target.parentNode.querySelector(".taskText")
-        taskText.classList.add("text-decoration-line-through");
-        let listItemParent = e.target.parentNode.parentNode
-        listItemParent.remove();
-        document.getElementById('taskList').append(listItemParent);
-        e.target.disabled = true // this line should be change when adding to undo task feature
+        let taskText = e.target.parentNode.querySelector(".taskText");
+        let listItemParent = e.target.parentNode.parentNode;
+
+        if (e.target.checked === true) {
+            let taskText = e.target.parentNode.querySelector(".taskText")
+            taskText.classList.add("text-decoration-line-through");
+            listItemParent.remove();
+            document.getElementById('taskList').append(listItemParent);
+            console.log("the button is checked")
+        }
+
+        if (e.target.checked === false) {
+            console.log("the button is unchecked")
+            taskText.classList.remove('text-decoration-line-through')
+        }
     }
 });
