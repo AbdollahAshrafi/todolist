@@ -41,12 +41,21 @@ function addTask() {
 
 // submitting using the Enter key
 document.addEventListener("DOMContentLoaded", () => {
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener("keyup", (e) => {
         if (e.key === "Enter") {
             document.querySelector("#submit").click()
         }
     })
 })
+
+
+// code not to submit when the input feild is emptied
+document.addEventListener("keyup", () => {
+    if (task.value === "") {
+        document.querySelector("#submit").disabled = true;
+    }
+})
+
 
 // code to disable submit button when new task is addded
 document.addEventListener("DOMContentLoaded", () => {
@@ -56,12 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 
-// code not to submit when the input feild is made empty
-document.addEventListener("keydown", () => {
-    if (task.value === "") {
-        document.querySelector("#submit").disabled = true;
-    }
-})
+
 
 // making the delete button work 
 taskList.addEventListener('click', (e) => {
